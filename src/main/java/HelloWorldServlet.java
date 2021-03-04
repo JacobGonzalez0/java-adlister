@@ -10,17 +10,21 @@ public class HelloWorldServlet extends HttpServlet {
     /**
      *
      */
+    private int count = 0;
+
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
         System.out.println(req.getParameter("name"));
-        if(req.getParameter("name").isEmpty()){
+        count++; //increase visit counter
+        if(req.getParameter("name") == null){
             out.println("<h1>Hello, World!</h1>");
         }else{
             out.println("<h1>Hello, " + req.getParameter("name") + "</h1>");
         }
+        out.println("<p>The page has been visited " + count + " times</p>");
         
     }
 }
