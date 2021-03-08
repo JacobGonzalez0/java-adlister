@@ -12,14 +12,18 @@
 %>
 <html>
 <head>
-    <title><%= "some title" %></title>
+    <title><%= "Login" %></title>
+    <%@ include file="partials/head.jsp"  %>
 </head>
 <body>
-
-    <form method="POST" action="login.jsp">
-        <input type="text" name="username" placeholder="Username"/>
-        <input type="password" name="password" placeholder="Password"/>
-        <input type="submit">
-    </form>
+    
+    <div class="container-fluid"> 
+    <%@ include file="partials/navbar.jsp" %>
+        <form class="form-group m-4" method="POST" action="login.jsp">
+            <input class="form-control m-2" type="text" name="username" placeholder="Username"/>
+            <input class="form-control m-2" type="password" name="password" placeholder="Password"/>
+            <input class="btn btn-primary m-2" type="submit">
+        </form>
+    </div>
 </body>
 </html>
