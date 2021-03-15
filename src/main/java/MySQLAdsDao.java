@@ -42,7 +42,7 @@ public class MySQLAdsDao implements Ads {
                     )
                 );
             };
-            
+
         }catch(SQLException err){
             err.printStackTrace();
         }
@@ -51,6 +51,26 @@ public class MySQLAdsDao implements Ads {
     }
 
     public Long insert(Ad ad){
+
+        String userInput = "INSERT INTO ads (user_id, title, description) values (" +
+        ad.getUserId() + " '" +
+        ad.getTitle() + "' '" +
+        ad.getDescription() + "');";
+
+        try{
+            Statement stmt = (Statement) this.connection.createStatement();
+            stmt.executeUpdate(userInput, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = stmt.getGeneratedKeys();
+            if(rs.next()){
+                System.out.println("Insert a new record! new id: " + rs.getLong(1));
+            }
+            
+
+        }catch( SQLException err){
+            err.printStackTrace();
+        }
+
+
         return null;
     }
 }
